@@ -1,0 +1,1 @@
+This folder is used to store additional requirements for the project. It could be used to define text styles, colors, etc.
