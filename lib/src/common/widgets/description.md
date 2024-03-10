@@ -1,0 +1,1 @@
+This folder contains common widfets used in the project. It could be used to store buttons, text fields, etc.
