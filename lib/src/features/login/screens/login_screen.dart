@@ -2,58 +2,92 @@ import 'package:flutter/material.dart';
 import '../../../constants/images.dart';
 import '../../../constants/colors.dart';
 import '../../../constants/sizes.dart';
+import 'login_form_widget.dart';
+import 'login_hlogo_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(paddingApp),
-        child: Column(
-          //Available screen
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            //Image of the welcome screen
-            const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: 'Email',
-                      hintText: 'Enter your email',
-                      border: OutlineInputBorder()),
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                      labelText: 'Password',
-                      hintText: 'Enter your password',
-                      border: OutlineInputBorder()),
-                ),
-              ],
-            ),
-
-            //
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Login'.toUpperCase(),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(),
-                      foregroundColor: TsecondaryColor,
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+    return SafeArea(
+        child: Scaffold(
+            body: SingleChildScrollView(
+                //Available screen
+                child: Container(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          //Header
+                          children: [
+                            LoginHeaderLogo(),
+                          ],
+                        ),
+                        Column(
+                          //Login form
+                          children: [
+                            LoginForm(),
+                          ],
+                        ),
+                        Column(
+                          //Other social medias
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Or login with',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall),
+                                  const SizedBox(height: 20),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      OutlinedButton(
+                                        onPressed: () {},
+                                        child:
+                                            Image.asset(GoogleLogo, width: 30),
+                                        style: OutlinedButton.styleFrom(
+                                          side: const BorderSide(
+                                              color: Colors
+                                                  .transparent //TprimaryColor300
+                                              ),
+                                        ),
+                                      ),
+                                      OutlinedButton(
+                                        onPressed: () {},
+                                        child: Image.asset(MicrosoftLogo,
+                                            width: 30, color: TprimaryColor300),
+                                        style: OutlinedButton.styleFrom(
+                                          side: const BorderSide(
+                                              color: Colors
+                                                  .transparent //TprimaryColor300
+                                              ),
+                                        ),
+                                      ),
+                                      OutlinedButton(
+                                        onPressed: () {},
+                                        child: Image.asset(FacebookLogo,
+                                            width: 30, color: TprimaryColor300),
+                                        style: OutlinedButton.styleFrom(
+                                          side: const BorderSide(
+                                              color: Colors
+                                                  .transparent //TprimaryColor300
+                                              ),
+                                        ),
+                                      ),
+                                      const SizedBox(width: 20),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(),
+                      ],
+                    )))));
   }
 }
