@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './src/utils/theme/theme.dart';
 import './src/constants/colors.dart';
+import './src/features/login/screens/login_screen.dart';
 
 void main() => runApp(const App());
 
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
         theme: TAppTheme.ligth,
         darkTheme: TAppTheme.dark,
         themeMode: ThemeMode.system,
-        home: Home());
+        home: LoginScreen());
   }
 }
 
