@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dev/src/features/register/screens/register_screen.dart';
+import 'package:flutter_dev/src/features/login/screens/login_screen.dart';
 
 
-class LoginScreen extends StatefulWidget {
+class RegisterScreen extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  final _userController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isObscure = true;
-
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,14 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 100,
             ),
             SizedBox(height: 32),
+            TextField(
+              controller: _userController,
+              decoration: InputDecoration(
+                labelText: 'Usuario',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16),
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
@@ -60,13 +68,12 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
 
 
-
             SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
                 // Aquí puedes agregar la lógica de inicio de sesión
               },
-              child: const Text('Ingresar',
+              child: const Text('Registrarse',
                                 style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromRGBO(255, 87, 32, 1),
@@ -74,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(height: 20),
-            const Text('Ingresa con',
+            const Text('Registrate con',
                         style: TextStyle(color: Colors.black)),
             SizedBox(height: 16),
             Row(
@@ -117,18 +124,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Aquí puedes agregar la lógica para navegar a la pantalla de registro
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RegisterScreen()),
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
               },
               child: RichText(
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: '¿No tienes cuenta? ',
+                      text: '¿Ya tienes cuenta? ',
                       style: TextStyle(color: Colors.black), // Color del texto "¿No tienes cuenta?"
                     ),
                     TextSpan(
-                      text: 'Regístrate',
+                      text: 'Inicia sesión',
                       style: TextStyle(color: Color.fromRGBO(255, 87, 32, 1)), // Color del texto "Regístrate"
                     ),
                   ],

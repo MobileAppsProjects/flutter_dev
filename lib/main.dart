@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: TAppTheme.ligth,
-        darkTheme: TAppTheme.dark,
+        //darkTheme: TAppTheme.dark,
         themeMode: ThemeMode.system,
         home: LoginScreen());
   }
