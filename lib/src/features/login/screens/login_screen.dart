@@ -17,7 +17,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       
-      body: Padding(
+      body: SingleChildScrollView( // Agrega esto
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -130,12 +131,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextSpan(
                       text: 'Regístrate',
                       style: TextStyle(color: Color.fromRGBO(255, 87, 32, 1)), // Color del texto "Regístrate"
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
