@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dev/src/features/register/screens/register_screen.dart';
+import 'package:flutter_dev/src/features/home/screens/home_screen.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -66,6 +67,12 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
               onPressed: () {
                 // Aquí puedes agregar la lógica de inicio de sesión
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+
               },
               child: const Text('Ingresar',
                                 style: TextStyle(color: Colors.white)),
