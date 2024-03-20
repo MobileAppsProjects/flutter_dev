@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dev/src/features/login/screens/auth_page.dart';
 import './src/utils/theme/theme.dart';
 import './src/constants/colors.dart';
 import './src/features/login/screens/login_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() => runApp(const App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const App());}
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -15,7 +23,7 @@ class App extends StatelessWidget {
         theme: TAppTheme.ligth,
         //darkTheme: TAppTheme.dark,
         themeMode: ThemeMode.system,
-        home: LoginScreen());
+        home: AuthPage());
   }
 }
 
