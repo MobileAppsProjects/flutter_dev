@@ -67,6 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '782892165043',
     projectId: 'movilesflutter',
     storageBucket: 'movilesflutter.appspot.com',
+    iosClientId: '782892165043-jfbb63g9apse5pk7nlhl85vh3hp7jqe7.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterDev',
   );
 
@@ -76,6 +77,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '782892165043',
     projectId: 'movilesflutter',
     storageBucket: 'movilesflutter.appspot.com',
+    iosClientId: '782892165043-3bu7pe3ppgmn6njecb5pdg5n357u46i1.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterDev.RunnerTests',
   );
 }

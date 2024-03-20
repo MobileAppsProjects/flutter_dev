@@ -13,10 +13,33 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isObscure = true;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? _user;
+
+void _handleGoogleSignIn(){
+  try{
+    GoogleAuthProvider _googleAuthProvider = GoogleAuthProvider();
+    _auth.signInWithProvider(_googleAuthProvider);
+  } catch (error){
+
+    print(error);
+  }
+}
+
+
+void initState(){
+  super.initState();
+  _auth.authStateChanges().listen((event) {
+    setState(() {
+      _user = event;
+    });
+  });
+}
 
 void signUserIn() async {
 
   // Loading Circle
+  
   showDialog(
     context: context, 
     builder: (context){
@@ -42,19 +65,17 @@ void signUserIn() async {
   } on FirebaseAuthException catch (e){
 
     // pop the loading circle
-     Navigator.pop(context);
-
+    Navigator.pop(context);
+  
 
 // WRONG EMAIL
     if (e.code == 'user-not-found'){
-
       wrongEmailMessage();
 
     }
  // WRONG PASSWORD  
   
      else if (e.code == 'wrong-password'){
-      
         wrongEmailPassword();
     }
 
@@ -87,6 +108,7 @@ void signUserIn() async {
   );
   
  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -135,19 +157,9 @@ void signUserIn() async {
               ),
             ),
 
-
-
             SizedBox(height: 50),
             ElevatedButton(
-              onPressed: () {
-                // Aquí puedes agregar la lógica de inicio de sesión
-
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
-
-              },
+              onPressed: signUserIn,
               child: const Text('Ingresar',
                                 style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
@@ -163,9 +175,7 @@ void signUserIn() async {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: () {
-                    // Aquí puedes agregar la lógica de inicio de sesión con Google
-                  },
+                  onPressed: _handleGoogleSignIn,
                   icon: Image.asset(
                     'assets/images/google_logo.png',
                     height: 32,
