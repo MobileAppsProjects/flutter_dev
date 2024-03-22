@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dev/src/features/login/screens/auth_page.dart';
+import 'package:flutter_dev/src/repository/authentication_repository/authentication_repository.dart';
+import 'package:get/get.dart';
 import './src/utils/theme/theme.dart';
 import './src/constants/colors.dart';
-import './src/features/login/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -10,8 +11,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(const App());}
+  ).then((value) => Get.put(AuthenticationRepository()));
+  runApp(const App());
+}
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -19,7 +21,7 @@ class App extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         theme: TAppTheme.ligth,
         //darkTheme: TAppTheme.dark,
         themeMode: ThemeMode.system,

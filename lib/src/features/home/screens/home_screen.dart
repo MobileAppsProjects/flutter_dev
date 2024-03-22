@@ -1,13 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dev/src/repository/authentication_repository/authentication_repository.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
-}
-
-void signUserOut() {
-  FirebaseAuth.instance.signOut();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -16,7 +13,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: signUserOut, icon: Icon(Icons.logout))
+          IconButton(
+              onPressed: () {
+                AuthenticationRepository.instance.signOut();
+              },
+              icon: Icon(Icons.logout))
         ],
       ),
       body: SingleChildScrollView(
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                     imageUrl: 'assets/images/juanvaldez.png',
                   ),
                   // Agrega más restaurantes destacados aquí
-                RestaurantCard(
+                  RestaurantCard(
                     category: 'Cafés',
                     isOpen: false,
                     name: 'Starbucks',
@@ -111,7 +112,6 @@ class _HomePageState extends State<HomePage> {
                     imageUrl: 'assets/images/burguer1.jpg',
                     onImageTap: () {},
                   ),
-
                 ],
               ),
             ),
@@ -161,7 +161,11 @@ class RestaurantCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(imageUrl, height: 160, width: 160,),
+          Image.asset(
+            imageUrl,
+            height: 160,
+            width: 160,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -205,54 +209,53 @@ class FoodCard extends StatelessWidget {
     required this.onImageTap,
   });
 
-@override
-Widget build(BuildContext context) {
-  return Card(
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ElevatedButton(
-          onPressed: onImageTap,
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 247, 247, 247)),
-            padding: MaterialStateProperty.all(EdgeInsets.zero),
-
-          ),
-          child: Container(
-            width: 60,
-            height: 65,
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              shape: BoxShape.circle,
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ElevatedButton(
+            onPressed: onImageTap,
+            style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(Color.fromARGB(255, 247, 247, 247)),
+              padding: MaterialStateProperty.all(EdgeInsets.zero),
             ),
-          
-          child: ClipOval(
-            child: Image.asset(imageUrl),
-            ),
-          ),
-        ),
-        SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              name,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            child: Container(
+              width: 60,
+              height: 65,
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                shape: BoxShape.circle,
+              ),
+              child: ClipOval(
+                child: Image.asset(imageUrl),
               ),
             ),
-            SizedBox(height: 5),
-            Text(
-              ' $type',
-              style: TextStyle(
-                fontSize: 15,
+          ),
+          SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
-}
+              SizedBox(height: 5),
+              Text(
+                ' $type',
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }

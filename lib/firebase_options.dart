@@ -44,40 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAZfaIRbmCtDpyIHSARCjJSwMVLWRu0Gk4',
-    appId: '1:782892165043:web:9a8dee179784af1fde0dc6',
-    messagingSenderId: '782892165043',
-    projectId: 'movilesflutter',
-    authDomain: 'movilesflutter.firebaseapp.com',
-    storageBucket: 'movilesflutter.appspot.com',
-    measurementId: 'G-S62MY44ZNH',
+    apiKey: 'AIzaSyDKb33DuHBRkzSQmgaq8J4c-3kDb-kz7O8',
+    appId: '1:716487127525:web:0862df4c8e3526092c3f0c',
+    messagingSenderId: '716487127525',
+    projectId: 'flutter-dev-46255',
+    authDomain: 'flutter-dev-46255.firebaseapp.com',
+    storageBucket: 'flutter-dev-46255.appspot.com',
+    measurementId: 'G-T7K8JBQRG9',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDZJ4S9vDbJNDK7iYtDC4LZcSsfug3eal8',
-    appId: '1:782892165043:android:a74231bd0782325fde0dc6',
-    messagingSenderId: '782892165043',
-    projectId: 'movilesflutter',
-    storageBucket: 'movilesflutter.appspot.com',
+    apiKey: 'AIzaSyC7kdh9ZB4eKblUCNV3eOyeylUsTUvZqRk',
+    appId: '1:716487127525:android:9b1462a184cdab8f2c3f0c',
+    messagingSenderId: '716487127525',
+    projectId: 'flutter-dev-46255',
+    storageBucket: 'flutter-dev-46255.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCrNcCFJBQQxExzkOCuKAvizP8Tc5pv508',
-    appId: '1:782892165043:ios:7cc2bfce0e28e4b0de0dc6',
-    messagingSenderId: '782892165043',
-    projectId: 'movilesflutter',
-    storageBucket: 'movilesflutter.appspot.com',
-    iosClientId: '782892165043-jfbb63g9apse5pk7nlhl85vh3hp7jqe7.apps.googleusercontent.com',
+    apiKey: 'AIzaSyASXtQiOwkEIivyWeRwMPZHP1yKQd2KO38',
+    appId: '1:716487127525:ios:ad9c3c6ea5f932a32c3f0c',
+    messagingSenderId: '716487127525',
+    projectId: 'flutter-dev-46255',
+    storageBucket: 'flutter-dev-46255.appspot.com',
     iosBundleId: 'com.example.flutterDev',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCrNcCFJBQQxExzkOCuKAvizP8Tc5pv508',
-    appId: '1:782892165043:ios:3c0cdee0cc2b1adbde0dc6',
-    messagingSenderId: '782892165043',
-    projectId: 'movilesflutter',
-    storageBucket: 'movilesflutter.appspot.com',
-    iosClientId: '782892165043-3bu7pe3ppgmn6njecb5pdg5n357u46i1.apps.googleusercontent.com',
+    apiKey: 'AIzaSyASXtQiOwkEIivyWeRwMPZHP1yKQd2KO38',
+    appId: '1:716487127525:ios:091f3d5759e87d132c3f0c',
+    messagingSenderId: '716487127525',
+    projectId: 'flutter-dev-46255',
+    storageBucket: 'flutter-dev-46255.appspot.com',
     iosBundleId: 'com.example.flutterDev.RunnerTests',
   );
 }
