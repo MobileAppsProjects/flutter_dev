@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dev/src/common/widgets/bottom_nav_bar.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/authentication_repository.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -113,26 +115,6 @@ class _HomePageState extends State<HomePage> {
                     onImageTap: () {},
                   ),
                 ],
-              ),
-            ),
-            // Botón de Home
-            SizedBox(height: 16),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Lógica para el botón de Home
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.home),
-                    SizedBox(width: 8),
-                    Text('Home'),
-                  ],
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(255, 87, 32, 1),
-                ),
               ),
             ),
           ],
