@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dev/src/features/login/screens/auth_page.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/authentication_repository.dart';
-import 'package:flutter_dev/src/features/root/my_home.dart';
 import 'package:get/get.dart';
 import './src/utils/theme/theme.dart';
 import './src/constants/colors.dart';

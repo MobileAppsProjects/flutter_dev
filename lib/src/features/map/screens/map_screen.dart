@@ -47,12 +47,12 @@ class _MapPageState extends State<MapPage> {
               child: NotificationListener<DraggableScrollableNotification>(
                 onNotification: (notification) {
                   setState(() {
-                    percentage = 2 * notification.extent - 0.3;
+                    percentage = 2 * notification.extent - 0.8;
                   });
                   return true;
                 },
                 child: DraggableScrollableSheet(
-                  maxChildSize: 0.65,
+                  maxChildSize: 0.9,
                   minChildSize: 0.4,
                   builder: (_, controller) {
                     return Material(
@@ -78,18 +78,21 @@ class _MapPageState extends State<MapPage> {
                                 ),
                               ),
                             ),
-                            const Text("Algun texto"),
+                            const SizedBox(height: 5),
+                            const Text("Bienvenido"),
                             const SizedBox(height: 5),
                             Text(
-                              "A donde vas",
+                              "¿Donde deseas comer hoy?",
                               style: Theme.of(context).textTheme.headlineMedium,
                             ),
                             const SizedBox(height: 20),
                             TextField(
                               decoration: InputDecoration(
+                                filled: true,
                                 prefixIcon: Icon(Icons.search),
                                 hintText: "Escribe tu destino",
                                 border: UnderlineInputBorder(),
+                                enabled: false,
                               ),
                             ),
                             const SizedBox(height: 20),
@@ -100,7 +103,7 @@ class _MapPageState extends State<MapPage> {
                             const SizedBox(height: 20),
                             Expanded(
                               child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
+                                scrollDirection: Axis.vertical,
                                 controller: controller,
                                 itemCount: 10,
                                 itemBuilder: (context, index) {
@@ -127,7 +130,7 @@ class _MapPageState extends State<MapPage> {
             Positioned(
               left: 0,
               right: 0,
-              top: -340 * (1 - percentage),
+              top: -170 * (1 - percentage),
               child: Opacity(
                 opacity: percentage,
                 child: _SearchDestimation(),
@@ -137,29 +140,6 @@ class _MapPageState extends State<MapPage> {
         ),
       ),
     );
-  }
-}
-
-class _PickPlaceInMap extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-        elevation: 10,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.place_sharp, color: Colors.grey, size: 20),
-              const SizedBox(width: 10),
-              const SizedBox(width: 10),
-              Text(
-                'Elegir destino',
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ],
-          ),
-        ));
   }
 }
 
@@ -188,11 +168,12 @@ class _SearchDestimation extends StatelessWidget {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.grey[200],
-                      prefixIcon: Icon(Icons.search),
-                      hintText: "Escribe tu destino",
+                      prefixIcon: Icon(Icons.my_location),
+                      hintText: "Ubicación actual",
                       border: UnderlineInputBorder(),
                     ),
                   ),
+                  const SizedBox(height: 10),
                   TextField(
                     decoration: InputDecoration(
                       filled: true,
@@ -201,6 +182,31 @@ class _SearchDestimation extends StatelessWidget {
                       hintText: "Escribe tu destino",
                       border: UnderlineInputBorder(),
                     ),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.place_sharp, color: TprimaryColor, size: 20),
+                      TextButton(
+                        onPressed: () {
+                          // Aquí puedes agregar la lógica para navegar a la pantalla de registro
+                        },
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: 'Selecciona la ubicación en el mapa',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(color: TprimaryColor)
+                                  // Color del texto "Regístrate"
+                                  ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               )),
