@@ -16,8 +16,8 @@ class TTextTheme {
       color: Colors.black,
     ),
     headlineSmall: TextStyle(
-      fontSize: 15,
-      fontWeight: FontWeight.normal,
+      fontSize: 1,
+      fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
     displayLarge: TextStyle(
