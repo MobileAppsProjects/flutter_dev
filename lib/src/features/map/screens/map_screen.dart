@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dev/src/constants/colors.dart';
 import 'package:flutter_dev/src/constants/images.dart';
+import 'package:flutter_dev/src/common/widgets/restaurant_card.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -41,12 +42,12 @@ class _MapPageState extends State<MapPage> {
               child: NotificationListener<DraggableScrollableNotification>(
                 onNotification: (notification) {
                   setState(() {
-                    percentage = 2 * notification.extent - 0.8;
+                    percentage = 2 * notification.extent - 0.3;
                   });
                   return true;
                 },
                 child: DraggableScrollableSheet(
-                  maxChildSize: 0.9,
+                  maxChildSize: 0.65,
                   minChildSize: 0.4,
                   builder: (_, controller) {
                     return Material(
@@ -86,17 +87,29 @@ class _MapPageState extends State<MapPage> {
                                 border: UnderlineInputBorder(),
                               ),
                             ),
+                            const SizedBox(height: 20),
+                            Text(
+                              "Restaurantes cercanos",
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+                            const SizedBox(height: 20),
                             Expanded(
                               child: ListView.builder(
-                                  padding: EdgeInsets.only(bottom: 30),
-                                  controller: controller,
-                                  itemCount: 20,
-                                  itemBuilder: (context, index) {
-                                    return ListTile(
-                                      contentPadding: EdgeInsets.zero,
-                                      title: Text('Item $index'),
-                                    );
-                                  }),
+                                scrollDirection: Axis.horizontal,
+                                controller: controller,
+                                itemCount: 10,
+                                itemBuilder: (context, index) {
+                                  return RestaurantCard(
+                                    width: 150.0,
+                                    height: 250.0,
+                                    onTap: () {
+                                      // Perform any desired action when the card is tapped
+                                      print('Restaurant card tapped');
+                                      // Navigate to a new screen, show a dialog, or perform any other action
+                                    },
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         ),
@@ -109,19 +122,10 @@ class _MapPageState extends State<MapPage> {
             Positioned(
               left: 0,
               right: 0,
-              top: -170 * (1 - percentage),
+              top: -340 * (1 - percentage),
               child: Opacity(
                 opacity: percentage,
                 child: _SearchDestimation(),
-              ),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: -50 * (1 - percentage),
-              child: Opacity(
-                opacity: percentage,
-                child: _PickPlaceInMap(),
               ),
             ),
           ],

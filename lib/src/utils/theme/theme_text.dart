@@ -43,12 +43,12 @@ class TTextTheme {
     bodyMedium: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     bodySmall: TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     labelMedium: TextStyle(
       fontSize: 14,
