@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dev/src/constants/colors.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
+class CustomBottomNavigationBar extends StatelessWidget {
+  final int selectedIndex;
   final Function(int) onItemTapped;
 
-  const CustomBottomNavigationBar({Key? key, required this.onItemTapped})
-      : super(key: key);
-
-  @override
-  _CustomBottomNavigationBarState createState() =>
-      _CustomBottomNavigationBarState();
-}
-
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int _selectedIndex = 0;
+  CustomBottomNavigationBar({
+    required this.selectedIndex,
+    required this.onItemTapped,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +23,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           label: 'Map',
         ),
       ],
-      currentIndex: _selectedIndex,
-      onTap: (int index) {
-        setState(() {
-          _selectedIndex = index;
-        });
-        widget.onItemTapped(index);
-      },
+      currentIndex: selectedIndex,
+      selectedItemColor: TprimaryColor,
+      onTap: onItemTapped,
     );
   }
 }
