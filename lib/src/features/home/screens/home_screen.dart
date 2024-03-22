@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dev/src/common/widgets/bottom_nav_bar.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/authentication_repository.dart';
 
 class HomePage extends StatefulWidget {

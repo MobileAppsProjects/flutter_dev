@@ -16,8 +16,8 @@ class TTextTheme {
       color: Colors.black,
     ),
     headlineSmall: TextStyle(
-      fontSize: 15,
-      fontWeight: FontWeight.normal,
+      fontSize: 1,
+      fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
     displayLarge: TextStyle(
@@ -43,12 +43,12 @@ class TTextTheme {
     bodyMedium: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     bodySmall: TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.normal,
-      color: Colors.black,
+      color: Colors.grey,
     ),
     labelMedium: TextStyle(
       fontSize: 14,
