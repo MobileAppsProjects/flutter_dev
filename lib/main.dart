@@ -26,7 +26,7 @@ class App extends StatelessWidget {
         theme: TAppTheme.ligth,
         //darkTheme: TAppTheme.dark,
         themeMode: ThemeMode.system,
-        home: MyHomePage());
+        home: AuthPage());
   }
 }
 
