@@ -8,8 +8,22 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_dev/src/features/root/my_home.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+class AuthenticationRepositoryFactory {
+  static AuthenticationRepository? _instance;
+
+  static AuthenticationRepository get instance {
+    _instance ??= AuthenticationRepository._internal();
+    return _instance!;
+  }
+}
+
 class AuthenticationRepository extends GetxController {
-  static AuthenticationRepository get instance => Get.find();
+
+  static AuthenticationRepository? _instance;
+
+  AuthenticationRepository._internal();
+
+  static AuthenticationRepository get instance =>  AuthenticationRepositoryFactory.instance;
 
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
