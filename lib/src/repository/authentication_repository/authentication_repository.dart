@@ -95,7 +95,9 @@ class AuthenticationRepository extends GetxController {
   }
 
   Future signOut() async {
-    await GoogleSignIn().disconnect();
+    if (firebaseUser.value!.providerData[0].providerId == 'google.com') {
+      await GoogleSignIn().signOut();
+    }
     await _auth.signOut();
     Get.offAll(() => LoginScreen());
   }
