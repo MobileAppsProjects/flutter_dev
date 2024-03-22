@@ -46,9 +46,24 @@ class RestaurantCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Cafes',
-                      style: Theme.of(context).textTheme.bodyMedium,
+                    Row(
+                      children: [
+                        Text(
+                          'Cafes',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        Spacer(),
+                        RichText(
+                          text: TextSpan(
+                              text: 'Open',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    backgroundColor: TtagOpenColor,
+                                  )),
+                        )
+                      ],
                     ),
                     SizedBox(height: 8.0),
                     Text(

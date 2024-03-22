@@ -29,3 +29,6 @@ const int secondaryColor = 0xFFFFFFFF;
 const int accentColor = 0xFF280500;
 const Color TsecondaryColor = Color(secondaryColor);
 const Color TaccentColor = Color(accentColor);
+
+const int tagOpenColor = 0XFFC7FAD8;
+const Color TtagOpenColor = Color(tagOpenColor);
