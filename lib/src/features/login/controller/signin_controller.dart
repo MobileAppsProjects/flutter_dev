@@ -7,7 +7,7 @@ class SignInController extends GetxController {
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  final isGoogleSignInLoading = false.obs;
   TextEditingController get emailController => _emailController;
   TextEditingController get passwordController => _passwordController;
 
@@ -15,5 +15,17 @@ class SignInController extends GetxController {
     // Sign in user
     AuthenticationRepository.instance
         .signInWithEmailAndPassword(email, password);
+  }
+
+  Future<void> signInWithGoogle() async {
+    // Sign in user with Google
+    try {
+      isGoogleSignInLoading.value = true;
+      await AuthenticationRepository.instance.signInWithGoogle();
+      isGoogleSignInLoading.value = false;
+    } catch (e) {
+      isGoogleSignInLoading.value = false;
+      print('Error: $e');
+    }
   }
 }

@@ -9,6 +9,8 @@ class RegisterController extends GetxController {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  final isGoogleSignInLoading = false.obs;
+
   TextEditingController get userController => _userController;
   TextEditingController get emailController => _emailController;
   TextEditingController get passwordController => _passwordController;
@@ -17,5 +19,17 @@ class RegisterController extends GetxController {
     // Register user
     AuthenticationRepository.instance
         .createUserWithEmailAndPassword(email, password);
+  }
+
+  Future<void> registerWithGoogle() async {
+    // Register user with Google
+    try {
+      isGoogleSignInLoading.value = true;
+      await AuthenticationRepository.instance.signInWithGoogle();
+      isGoogleSignInLoading.value = false;
+    } catch (e) {
+      isGoogleSignInLoading.value = false;
+      print('Error: $e');
+    }
   }
 }
