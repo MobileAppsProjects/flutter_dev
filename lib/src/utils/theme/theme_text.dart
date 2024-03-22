@@ -37,18 +37,28 @@ class TTextTheme {
     ),
     bodyLarge: TextStyle(
       fontSize: 25,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.normal,
       color: Colors.black,
     ),
     bodyMedium: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
       color: Colors.black,
     ),
     bodySmall: TextStyle(
       fontSize: 12,
       fontWeight: FontWeight.normal,
       color: Colors.black,
+    ),
+    labelMedium: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+      color: TprimaryColor,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+      color: TprimaryColor,
     ),
   );
 

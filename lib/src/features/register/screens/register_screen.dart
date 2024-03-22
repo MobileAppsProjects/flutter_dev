@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dev/src/features/login/screens/login_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter_dev/src/features/register/controller/register_controller.dart';
+import 'package:flutter_dev/src/constants/images.dart';
+import 'package:flutter_dev/src/constants/colors.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -15,6 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final controller = Get.put(RegisterController());
     final _formKey = GlobalKey<FormState>(); // Creamos una clave global
     return Scaffold(
+      backgroundColor: TsecondaryColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -24,9 +27,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 60),
+                SizedBox(height: 100),
                 Image.asset(
-                  'assets/images/foodes_logo.png',
+                  AppLogo,
                   height: 100,
                 ),
                 SizedBox(height: 32),
@@ -45,7 +48,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 20),
                 TextFormField(
                   controller: controller.emailController,
                   decoration: InputDecoration(
@@ -59,7 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 20),
                 TextFormField(
                   controller: controller.passwordController,
                   obscureText: _isObscure,
@@ -84,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: 60),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -104,16 +107,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 SizedBox(height: 20),
-                const Text('Registrate con',
-                    style: TextStyle(color: Colors.black)),
-                SizedBox(height: 16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 1,
+                      width: 100,
+                      color: Colors.black,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('O'),
+                    ),
+                    Container(
+                      height: 1,
+                      width: 100,
+                      color: Colors.black,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
                       onPressed: () {},
                       icon: Image.asset(
-                        'assets/images/google_logo.png',
+                        GoogleLogo,
                         height: 32,
                       ),
                     ),
@@ -121,7 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     IconButton(
                       onPressed: () {},
                       icon: Image.asset(
-                        'assets/images/Microsoft_logo.png',
+                        MicrosoftLogo,
                         height: 32,
                       ),
                     ),
@@ -129,7 +149,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     IconButton(
                       onPressed: () {},
                       icon: Image.asset(
-                        'assets/images/facebook_logo.png',
+                        FacebookLogo,
                         height: 32,
                       ),
                     ),
@@ -148,12 +168,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         TextSpan(
                           text: '¿Ya tienes cuenta? ',
-                          style: TextStyle(color: Colors.black),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         TextSpan(
                           text: 'Inicia sesión',
                           style:
-                              TextStyle(color: Color.fromRGBO(255, 87, 32, 1)),
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: TprimaryColor,
+                                  ),
                         ),
                       ],
                     ),

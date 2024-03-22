@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dev/src/constants/images.dart';
 import 'package:flutter_dev/src/features/login/controller/signin_controller.dart';
 import 'package:flutter_dev/src/features/register/screens/register_screen.dart';
 import 'package:get/get.dart';
+import 'package:flutter_dev/src/constants/colors.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final controller = Get.put(SignInController());
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
+      backgroundColor: TsecondaryColor,
       body: SingleChildScrollView(
         // Agrega esto
         child: Padding(
@@ -22,11 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 60),
-              Image.asset(
-                'assets/images/foodes_logo.png',
-                height: 100,
-              ),
+              SizedBox(height: 180),
+              Image.asset(height: 100, AppLogo),
               SizedBox(height: 32),
               Column(
                 children: [
@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 20),
                         TextFormField(
                           controller: controller.passwordController,
                           obscureText: _isObscure,
@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 60),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -80,15 +80,33 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text('Ingresar',
                         style: TextStyle(color: Colors.white)),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromRGBO(255, 87, 32, 1),
+                      backgroundColor: TprimaryColor,
                       minimumSize: Size(double.infinity, 50),
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 20),
-              const Text('Ingresa con', style: TextStyle(color: Colors.black)),
-              SizedBox(height: 14),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 1,
+                    width: 100,
+                    color: Colors.black,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('O'),
+                  ),
+                  Container(
+                    height: 1,
+                    width: 100,
+                    color: Colors.black,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -98,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller.signInWithGoogle();
                     },
                     icon: Image.asset(
-                      'assets/images/google_logo.png',
+                      GoogleLogo,
                       height: 32,
                     ),
                   ),
@@ -108,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // Aquí puedes agregar la lógica de inicio de sesión con Microsoft
                     },
                     icon: Image.asset(
-                      'assets/images/Microsoft_logo.png',
+                      MicrosoftLogo,
                       height: 32,
                     ),
                   ),
@@ -118,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // Aquí puedes agregar la lógica de inicio de sesión con Facebook
                     },
                     icon: Image.asset(
-                      'assets/images/facebook_logo.png',
+                      FacebookLogo,
                       height: 32,
                     ),
                   ),
@@ -128,26 +146,25 @@ class _LoginScreenState extends State<LoginScreen> {
               TextButton(
                 onPressed: () {
                   // Aquí puedes agregar la lógica para navegar a la pantalla de registro
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => RegisterScreen()),
-                  );
+                  Get.to(() => RegisterScreen());
                 },
                 child: RichText(
                   text: TextSpan(
                     children: [
                       TextSpan(
                         text: '¿No tienes cuenta? ',
-                        style: TextStyle(
-                            color: Colors
-                                .black), // Color del texto "¿No tienes cuenta?"
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium, // Color del texto "¿No tienes cuenta?"
                       ),
                       TextSpan(
-                        text: 'Regístrate',
-                        style: TextStyle(
-                            color: Color.fromRGBO(255, 87, 32,
-                                1)), // Color del texto "Regístrate"
-                      ),
+                          text: 'Regístrate',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(color: TprimaryColor)
+                          // Color del texto "Regístrate"
+                          ),
                     ],
                   ),
                 ),
