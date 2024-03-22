@@ -5,7 +5,7 @@ import 'package:flutter_dev/src/features/login/screens/login_screen.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_dev/src/features/home/screens/home_screen.dart';
+import 'package:flutter_dev/src/features/root/my_home.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -35,7 +35,7 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => HomePage())
+          ? Get.offAll(() => MyHomePage())
           : Get.to(() => LoginScreen());
     } on FirebaseAuthException catch (e) {
       // handle error
@@ -54,7 +54,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => HomePage())
+          ? Get.offAll(() => MyHomePage())
           : Get.to(() => LoginScreen());
     } on FirebaseAuthException catch (e) {
       // handle error
