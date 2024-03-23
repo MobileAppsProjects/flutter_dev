@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dev/src/features/login/screens/auth_page.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import './src/utils/theme/theme.dart';
 import './src/constants/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,6 +13,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) => Get.put(AuthenticationRepository()));
+
+  await Permission.locationWhenInUse.isDenied.then((value) {
+    if (value) {
+      Permission.locationWhenInUse.request();
+    }
+  });
   runApp(const App());
 }
 
