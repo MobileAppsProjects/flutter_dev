@@ -39,6 +39,7 @@ class AuthenticationRepository extends GetxController {
     if (user == null) {
       // return to login screen
     } else {
+      
       // return to home screen
     }
   }
