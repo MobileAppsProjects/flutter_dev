@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dev/src/constants/colors.dart';
-import 'package:flutter_dev/src/constants/images.dart';
 import 'package:flutter_dev/src/common/widgets/restaurant_card.dart';
-import 'package:flutter_dev/src/features/map/screens/controller/current_location.dart';
+import 'package:flutter_dev/src/features/map/controller/current_location.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_dev/src/features/map/screens/search_destination_card.dart';
+import 'package:get/get.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -22,6 +21,7 @@ class _MapPageState extends State<MapPage> {
   GoogleMapController? mapController;
   @override
   Widget build(BuildContext context) {
+    final locationController = Get.put(LocationController());
     return Scaffold(
       backgroundColor: TsecondaryColor,
       body: SafeArea(
@@ -30,14 +30,38 @@ class _MapPageState extends State<MapPage> {
             Positioned.fill(
                 bottom: MediaQuery.of(context).size.height * 0.25,
                 child: GoogleMap(
-                  onMapCreated: (GoogleMapController controller) {
-                    mapController = controller;
-                    googleMapCompleterController.complete(controller);
-                  },
-                  mapType: MapType.normal,
-                  myLocationButtonEnabled: true,
-                  initialCameraPosition: kGooglePlex,
-                )),
+                    mapType: MapType.normal,
+                    myLocationButtonEnabled: true,
+                    onMapCreated: (GoogleMapController controller) {
+                      mapController = controller;
+                      locationController.setCurrentLocation();
+                    },
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(
+                        4.6020853,
+                        -74.0648065,
+                      ),
+                      zoom: 14.4746,
+                    ),
+                    minMaxZoomPreference: MinMaxZoomPreference(17, 22),
+                    cameraTargetBounds: CameraTargetBounds(
+                      LatLngBounds(
+                        southwest: LatLng(4.60040, -74.0662894),
+                        northeast: LatLng(
+                          4.6022806,
+                          -74.0645703,
+                        ),
+                      ),
+                    ),
+                    markers: {
+                      Marker(
+                        markerId: MarkerId('current'),
+                        position: LatLng(
+                          locationController.currentLocation.latitude,
+                          locationController.currentLocation.longitude,
+                        ),
+                      ),
+                    })),
             Positioned(
               left: 16,
               top: 16,
