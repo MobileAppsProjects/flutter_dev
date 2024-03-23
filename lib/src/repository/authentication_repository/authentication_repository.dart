@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_dev/main.dart';
 import 'package:flutter_dev/src/features/login/screens/login_screen.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
+import 'package:flutter_dev/src/repository/authentication_repository/firebase_db.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_dev/src/features/root/my_home.dart';
@@ -11,7 +12,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
-  final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseSingleton().firebaseAuth;
   late final Rx<User?> firebaseUser;
 
   @override
