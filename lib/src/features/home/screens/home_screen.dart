@@ -122,11 +122,19 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 200,
               child: ListView(
-                // horizontal list
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  RestaurantCard(name: 'Juan Valdez', status: 'Open', imageUrl: "https://upload.wikimedia.org/wikipedia/en/b/b8/Juan_Valdez_Caf%C3%A9_Logo.jpg",),
-                  RestaurantCard(name: 'Senecafé', status: 'Open', imageUrl:"https://img.freepik.com/vector-premium/coffee-vintage-logo-design-isnpiration-cafeteria_427676-94.jpg" ,),
+                  RestaurantCardBuilder()
+                      .setName("Juan Valdez")
+                      .setStatus("Open")
+                      .setImageUrl("https://upload.wikimedia.org/wikipedia/en/b/b8/Juan_Valdez_Caf%C3%A9_Logo.jpg")
+                      .build(),
+                  RestaurantCardBuilder()
+                      .setName("Senecafé")
+                      .setStatus("Open")
+                      .setImageUrl("https://img.freepik.com/vector-premium/coffee-vintage-logo-design-isnpiration-cafeteria_427676-94.jpg")
+                      .build(),
+                  // RestaurantCardBuilder
                 ],
               ),
             ),
@@ -209,6 +217,36 @@ class FoodCard extends StatelessWidget {
       title: Text(foodName),
       subtitle: Text('Type of food: $foodType'),
       trailing: Icon(Icons.arrow_forward_ios),
+    );
+  }
+}
+
+//builder design pattern
+class RestaurantCardBuilder {
+  String _name = "Default Name";
+  String _status = "Closed";
+  String _imageUrl = "https://defaultimage.jpg";
+
+  RestaurantCardBuilder setName(String name) {
+    _name = name;
+    return this;
+  }
+
+  RestaurantCardBuilder setStatus(String status) {
+    _status = status;
+    return this;
+  }
+
+  RestaurantCardBuilder setImageUrl(String imageUrl) {
+    _imageUrl = imageUrl;
+    return this;
+  }
+
+  RestaurantCard build() {
+    return RestaurantCard(
+      name: _name,
+      status: _status,
+      imageUrl: _imageUrl,
     );
   }
 }
