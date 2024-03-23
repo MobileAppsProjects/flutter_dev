@@ -30,13 +30,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {
-              AuthenticationRepository.instance.signOut();
-            },
-            icon: Icon(Icons.logout))   
+              onPressed: () {
+                AuthenticationRepository.instance.signOut();
+              },
+              icon: Icon(Icons.logout))
         ],
       ),
       body: SingleChildScrollView(
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             // Promotion Cards Section
             SizedBox(
-              height: 100, 
+              height: 100,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 5, // Number of promotions
@@ -53,14 +54,15 @@ class _HomePageState extends State<HomePage> {
                   return Card(
                     margin: EdgeInsets.all(8),
                     child: Container(
-                      width: 300, 
+                      width: 300,
                       child: Row(
                         children: [
                           Container(
-                            width: 195, 
+                            width: 195,
                             padding: EdgeInsets.all(8),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center, // Center column 
+                              mainAxisAlignment:
+                                  MainAxisAlignment.center, // Center column
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Flexible(
@@ -77,11 +79,13 @@ class _HomePageState extends State<HomePage> {
                                   padding: const EdgeInsets.only(top: 4.0),
                                   child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Text('See restaurant', style: TextStyle(fontSize: 10)),
+                                    child: Text('See restaurant',
+                                        style: TextStyle(fontSize: 10)),
                                     style: ElevatedButton.styleFrom(
-                                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 8, vertical: 4),
                                       textStyle: TextStyle(
-                                        fontSize: 10, 
+                                        fontSize: 10,
                                       ),
                                       minimumSize: Size(0, 30), // button size
                                     ),
@@ -92,11 +96,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                           // Image section - 35% of the width
                           Container(
-                            width: 105, 
+                            width: 105,
                             child: Image.network(
                               'https://brandemia.org/sites/default/files/sites/default/files/logo_el_corral_despues.jpg',
                               fit: BoxFit.cover,
-                              height: 100, 
+                              height: 100,
                             ),
                           ),
                         ],
@@ -121,7 +125,8 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text('Featured restaurants', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              child: Text('Featured restaurants',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             ),
             Container(
               height: 200,
@@ -131,12 +136,14 @@ class _HomePageState extends State<HomePage> {
                   RestaurantCardBuilder()
                       .setName("Juan Valdez")
                       .setStatus("Open")
-                      .setImageUrl("https://upload.wikimedia.org/wikipedia/en/b/b8/Juan_Valdez_Caf%C3%A9_Logo.jpg")
+                      .setImageUrl(
+                          "https://upload.wikimedia.org/wikipedia/en/b/b8/Juan_Valdez_Caf%C3%A9_Logo.jpg")
                       .build(),
                   RestaurantCardBuilder()
                       .setName("Senecafé")
                       .setStatus("Open")
-                      .setImageUrl("https://img.freepik.com/vector-premium/coffee-vintage-logo-design-isnpiration-cafeteria_427676-94.jpg")
+                      .setImageUrl(
+                          "https://img.freepik.com/vector-premium/coffee-vintage-logo-design-isnpiration-cafeteria_427676-94.jpg")
                       .build(),
                   // RestaurantCardBuilder
                 ],
@@ -144,31 +151,14 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 24.0),
-              child: Text('Most popular food', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              child: Text('Most popular food',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             ),
             FoodCard(foodName: 'Burgers', foodType: 'Fastfood'),
             FoodCard(foodName: 'Burgers', foodType: 'Fastfood'),
             FoodCard(foodName: 'Burgers', foodType: 'Fastfood'),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: 'Map',
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
       ),
     );
   }
@@ -178,9 +168,13 @@ class RestaurantCard extends StatelessWidget {
   final String name;
   final String status;
   final String imageUrl;
-  
 
-  const RestaurantCard({Key? key, required this.name, required this.status,required this.imageUrl,}) : super(key: key);
+  const RestaurantCard({
+    Key? key,
+    required this.name,
+    required this.status,
+    required this.imageUrl,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -212,7 +206,8 @@ class FoodCard extends StatelessWidget {
   final String foodName;
   final String foodType;
 
-  const FoodCard({Key? key, required this.foodName, required this.foodType}) : super(key: key);
+  const FoodCard({Key? key, required this.foodName, required this.foodType})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
