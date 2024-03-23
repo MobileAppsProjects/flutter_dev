@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dev/src/features/home/screens/home_screen.dart';
 import 'package:flutter_dev/src/features/login/screens/auth_page.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:get/get.dart';
