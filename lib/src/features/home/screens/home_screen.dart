@@ -31,9 +31,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      // An AppBar with no properties 
-      backgroundColor: Colors.white, // 
-      elevation: 0, // shadow
+        actions: [
+          IconButton(
+            onPressed: () {
+              AuthenticationRepository.instance.signOut();
+            },
+            icon: Icon(Icons.logout))   
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
