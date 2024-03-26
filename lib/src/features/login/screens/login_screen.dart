@@ -19,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: TsecondaryColor,
       body: SingleChildScrollView(
-        // Agrega esto
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -112,7 +111,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      // Aquí puedes agregar la lógica de inicio de sesión con Google
                       controller.signInWithGoogle();
                     },
                     icon: Image.asset(

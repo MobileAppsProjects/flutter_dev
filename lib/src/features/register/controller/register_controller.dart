@@ -15,7 +15,7 @@ class RegisterController extends GetxController {
   TextEditingController get emailController => _emailController;
   TextEditingController get passwordController => _passwordController;
 
-  void register(String email, String password) {
+  void registerUser(String email, String password) {
     // Register user
     AuthenticationRepository.instance
         .createUserWithEmailAndPassword(email, password);
