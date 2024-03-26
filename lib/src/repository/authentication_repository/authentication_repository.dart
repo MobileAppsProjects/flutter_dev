@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter_dev/main.dart';
 import 'package:flutter_dev/src/features/login/screens/login_screen.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/firebase_db.dart';
@@ -8,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_dev/src/features/root/my_home.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_dev/src/services/user.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -23,10 +22,14 @@ class AuthenticationRepository extends GetxController {
   }
 
   _setInitialScreen(User? user) {
+    /** 
+     *This function will be called every time the user changes.
+    */
     if (user == null) {
-      // return to login screen
+      Get.offAll(() => LoginScreen());
     } else {
       // return to home screen
+      Get.offAll(() => MyHomePage());
     }
   }
 
@@ -38,6 +41,8 @@ class AuthenticationRepository extends GetxController {
       firebaseUser.value != null
           ? Get.offAll(() => MyHomePage())
           : Get.to(() => LoginScreen());
+
+      await fetchAlbum(firebaseUser.value!.uid, email, password);
     } on FirebaseAuthException catch (e) {
       // handle error
       final ex = SignUpEmailPasswordFailure.code(e.code);

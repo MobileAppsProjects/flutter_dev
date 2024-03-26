@@ -14,7 +14,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RegisterController());
+    final controller =
+        Get.put(RegisterController()); // Obtenemos la instancia del controlador
     final _formKey = GlobalKey<FormState>(); // Creamos una clave global
     return Scaffold(
       backgroundColor: TsecondaryColor,
@@ -93,7 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     if (_formKey.currentState!.validate()) {
                       // Validamos el formulario
                       // Si el formulario es válido, entonces hacemos algo
-                      RegisterController.instance.register(
+                      RegisterController.instance.registerUser(
                         controller.emailController.text.trim(),
                         controller.passwordController.text.trim(),
                       );
@@ -131,7 +132,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        controller.registerWithGoogle();
+                      },
                       icon: Image.asset(
                         GoogleLogo,
                         height: 32,

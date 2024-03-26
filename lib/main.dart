@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dev/src/features/home/screens/home_screen.dart';
-import 'package:flutter_dev/src/features/login/screens/auth_page.dart';
+import 'package:flutter_dev/src/features/login/screens/login_screen.dart';
 import 'package:flutter_dev/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -10,11 +9,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  // Initialize Firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) => Get.put(AuthenticationRepository()));
-
+  // Request location permission
   await Permission.locationWhenInUse.isDenied.then((value) {
     if (value) {
       Permission.locationWhenInUse.request();
@@ -33,7 +33,7 @@ class App extends StatelessWidget {
         theme: TAppTheme.ligth,
         //darkTheme: TAppTheme.dark,
         themeMode: ThemeMode.system,
-        home: AuthPage());
+        home: LoginScreen());
   }
 }
 
