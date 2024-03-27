@@ -62,21 +62,6 @@ class _MapPageState extends State<MapPage> {
                         ),
                       ),
                     })),
-            Positioned(
-              left: 16,
-              top: 16,
-              child: FloatingActionButton(
-                child: Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                ),
-                backgroundColor: TsecondaryColor,
-                onPressed: () {
-                  // Add your onPressed code here!
-                  // Add your onPressed code here!
-                },
-              ),
-            ),
             Positioned.fill(
               child: NotificationListener<DraggableScrollableNotification>(
                 onNotification: (notification) {

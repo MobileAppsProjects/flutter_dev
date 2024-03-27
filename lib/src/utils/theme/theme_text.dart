@@ -6,7 +6,7 @@ class TTextTheme {
   // text theme for light mode
   static TextTheme light = const TextTheme(
     headlineLarge: TextStyle(
-      fontSize: 30,
+      fontSize: 25,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
@@ -16,7 +16,7 @@ class TTextTheme {
       color: Colors.black,
     ),
     headlineSmall: TextStyle(
-      fontSize: 1,
+      fontSize: 10,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
