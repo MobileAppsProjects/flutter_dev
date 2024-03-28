@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: TsecondaryColor,
-      body: SingleChildScrollView(
+      body: Container(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
