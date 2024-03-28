@@ -77,6 +77,7 @@ class _HomePageState extends State<HomePage> {
                   style: Theme.of(context).textTheme.headlineLarge),
               Container(
                 height: 200,
+                padding: EdgeInsets.only(right: 16),
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   itemCount: 5, // Number of restaurants

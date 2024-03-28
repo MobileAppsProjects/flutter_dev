@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dev/src/constants/colors.dart';
-import 'package:flutter_dev/src/constants/images.dart';
-import 'package:flutter_dev/src/utils/theme/theme_text.dart';
 
 class RestaurantCard extends StatelessWidget {
   final double width;
@@ -50,7 +48,7 @@ class RestaurantCard extends StatelessWidget {
                       children: [
                         Text(
                           'Cafes',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                         Spacer(),
                         RichText(
